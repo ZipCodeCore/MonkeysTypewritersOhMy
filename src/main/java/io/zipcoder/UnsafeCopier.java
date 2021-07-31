@@ -10,7 +10,7 @@ public class UnsafeCopier extends Copier {
     }
 
     public void run() {
-        Thread current = Thread.currentThread();
+
         while(stringIterator.hasNext()){
             this.copied += " ";
             this.copied += stringIterator.next();

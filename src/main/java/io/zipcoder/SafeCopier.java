@@ -14,10 +14,9 @@ public class SafeCopier extends Copier{
     //winterbe.com/posts/2015/04/30/java8-concurrency-tutorial-synchronized-locks-examples/
     ReentrantLock threadlock = new ReentrantLock();
 
-    @Override
     public void run() {
 
-        Thread current = Thread.currentThread();
+        \
         threadlock.lock();
         while(stringIterator.hasNext()){
             try {

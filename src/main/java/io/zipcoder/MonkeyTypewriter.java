@@ -22,7 +22,7 @@ public class MonkeyTypewriter {
                 "its noisiest authorities insisted on its being received, for good or for\n" +
                 "evil, in the superlative degree of comparison only.";
 
-        // Do all of the Monkey / Thread building here
+//         Do all of the Monkey / Thread building here
         UnsafeCopier unsafe = new UnsafeCopier(introduction);
         Thread[] unsafeThreads = new Thread[5];
         Arrays.stream(unsafeThreads)
@@ -38,6 +38,8 @@ public class MonkeyTypewriter {
                     thread = new Thread(safe);
                     thread.start();
                 });
+
+
         // For each Copier(one safe and one unsafe), create and start 5 monkeys copying the introduction to
         // A Tale Of Two Cities.
 
