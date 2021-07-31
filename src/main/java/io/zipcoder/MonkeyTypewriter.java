@@ -1,9 +1,12 @@
 package io.zipcoder;
 
+import java.util.Arrays;
+
 public class MonkeyTypewriter {
     public static void main(String[] args) {
-        String introduction = "It was the best of times,\n" +
-                "it was the blurst of times,\n" +
+        String introduction =
+                "It was the best of times,\n" +
+                "it was the worst of times,\n" +
                 "it was the age of wisdom,\n" +
                 "it was the age of foolishness,\n" +
                 "it was the epoch of belief,\n" +
@@ -24,6 +27,30 @@ public class MonkeyTypewriter {
         // For each Copier(one safe and one unsafe), create and start 5 monkeys copying the introduction to
         // A Tale Of Two Cities.
 
+        UnsafeCopier dumbMonkeys = new UnsafeCopier(introduction);
+//        Thread unsafeThread1 = new Thread(dumbMonkeys);
+//        Thread unsafeThread2 = new Thread(dumbMonkeys);
+//        Thread unsafeThread3 = new Thread(dumbMonkeys);
+//        Thread unsafeThread4 = new Thread(dumbMonkeys);
+//        Thread unsafeThread5 = new Thread(dumbMonkeys);
+//        unsafeThread1.start();
+//        unsafeThread2.start();
+//        unsafeThread3.start();
+//        unsafeThread4.start();
+//        unsafeThread5.start();
+
+        Thread[] unsafeThreads = new Thread[5];
+        Arrays.stream(unsafeThreads).forEach(thread -> {
+            thread = new Thread(dumbMonkeys);
+            thread.start();
+        });
+
+        SafeCopier smartMonkeys = new SafeCopier(introduction);
+        Thread[] safeThreads = new Thread[5];
+        Arrays.stream(safeThreads).forEach(thread -> {
+            thread = new Thread(smartMonkeys);
+            thread.start();
+        });
 
         // This wait is here because main is still a thread and we want the main method to print the finished copies
         // after enough time has passed.
@@ -34,5 +61,8 @@ public class MonkeyTypewriter {
         }
 
         // Print out the copied versions here.
+        dumbMonkeys.printCopy();
+        smartMonkeys.printCopy();
+
     }
 }
