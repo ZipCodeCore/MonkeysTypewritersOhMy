@@ -8,10 +8,10 @@ amount of time will almost surely type a given text.
 
 We don't have that kind of time, but what we do have are super smart monkeys.  These monkeys are able to copy text.
 
-So, guess what.  We're starting a printing company powered entirely off of monkey typists.
+So, guess what?  We're starting a printing company powered entirely off of monkey typists.
 
 ### What to do!
-Testing multithreaded applications is super difficult.  Even more so, there's a chance that (if you're not actually
+Testing multithreaded applications is SUPER difficult.  Even moreso, there's a chance that (if you're not actually
 testing things correctly) your tests will occasionally pass when they shouldn't (since a poorly threaded application
 isn't guaranteed to mess anything up).  Instead, we're going to use the main method in `Monkey Typewriter` to see
 exactly what happens when things are threaded incorrectly vs correctly.
