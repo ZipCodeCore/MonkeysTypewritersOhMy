@@ -1,5 +1,7 @@
 package io.zipcoder;
 
+import java.util.concurrent.CountDownLatch;
+
 public class MonkeyTypewriter {
     public static void main(String[] args) {
         String introduction = "It was the best of times,\n" +
@@ -24,15 +26,33 @@ public class MonkeyTypewriter {
         // For each Copier(one safe and one unsafe), create and start 5 monkeys copying the introduction to
         // A Tale Of Two Cities.
 
+        UnsafeCopier unsafeCopier = new UnsafeCopier(introduction);
+
+        new Thread(unsafeCopier).start();
+        new Thread(unsafeCopier).start();
+        new Thread(unsafeCopier).start();
+        new Thread(unsafeCopier).start();
+        new Thread(unsafeCopier).start();
+
+
+        SafeCopier saferCopier = new SafeCopier(introduction);
+        new Thread(saferCopier).start();
+        new Thread(saferCopier).start();
+        new Thread(saferCopier).start();
+        new Thread(saferCopier).start();
+        new Thread(saferCopier).start();
 
         // This wait is here because main is still a thread and we want the main method to print the finished copies
         // after enough time has passed.
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
+
         } catch(InterruptedException e) {
             System.out.println("MAIN INTERRUPTED");
         }
 
         // Print out the copied versions here.
+        System.out.println("UnSafe-Copier: \n" + unsafeCopier.copied);
+        System.out.println("Safe-Copier: \n" + saferCopier.copied);
     }
 }
