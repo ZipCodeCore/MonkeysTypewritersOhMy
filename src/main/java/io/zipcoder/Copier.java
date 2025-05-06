@@ -18,4 +18,8 @@ public abstract class Copier implements Runnable {
     }
 
     public abstract void run();
+
+    public void printCopy(){
+        System.out.println(this.copied);
+    }
 }
